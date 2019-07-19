@@ -17,8 +17,8 @@ public class springTest {
 
     @Test
     public void testSpring(){
-        UserService userService = (UserService) spring.getBean("userService");
-        System.out.printf("===="+ userService);
+//        UserService userService = (UserService) spring.getBean("userService");
+//        System.out.printf("===="+ userService);
 
     }
 }
