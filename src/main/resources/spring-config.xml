@@ -57,66 +57,66 @@
     <!--<import resource="spring-cache-ehcache-dict.xml"/>-->
 
     <!-- 阿里 druid数据库连接池 -->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <!-- 数据库基本信息配置 -->
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-        <property name="driverClassName" value="${jdbc.driverClassName}"/>
-        <property name="filters" value="${filters}"/>
-        <!-- 最大并发连接数 -->
-        <property name="maxActive" value="${maxActive}"/>
-        <!-- 初始化连接数量 -->
-        <property name="initialSize" value="${initialSize}"/>
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="${maxWait}"/>
-        <!-- 最小空闲连接数 -->
-        <property name="minIdle" value="${minIdle}"/>
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
-        <property name="validationQuery" value="${validationQuery}"/>
-        <property name="testWhileIdle" value="${testWhileIdle}"/>
-        <property name="testOnBorrow" value="${testOnBorrow}"/>
-        <property name="testOnReturn" value="${testOnReturn}"/>
-        <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}"/>
-        <!-- 打开removeAbandoned功能 -->
-        <property name="removeAbandoned" value="${removeAbandoned}"/>
-        <!-- 1800秒，也就是30分钟 -->
-        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>
-        <!-- 关闭abanded连接时输出错误日志 -->
-        <property name="logAbandoned" value="${logAbandoned}"/>
-    </bean>
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+        <!--&lt;!&ndash; 数据库基本信息配置 &ndash;&gt;-->
+        <!--<property name="url" value="${jdbc.url}"/>-->
+        <!--<property name="username" value="${jdbc.username}"/>-->
+        <!--<property name="password" value="${jdbc.password}"/>-->
+        <!--<property name="driverClassName" value="${jdbc.driverClassName}"/>-->
+        <!--<property name="filters" value="${filters}"/>-->
+        <!--&lt;!&ndash; 最大并发连接数 &ndash;&gt;-->
+        <!--<property name="maxActive" value="${maxActive}"/>-->
+        <!--&lt;!&ndash; 初始化连接数量 &ndash;&gt;-->
+        <!--<property name="initialSize" value="${initialSize}"/>-->
+        <!--&lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="${maxWait}"/>-->
+        <!--&lt;!&ndash; 最小空闲连接数 &ndash;&gt;-->
+        <!--<property name="minIdle" value="${minIdle}"/>-->
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>-->
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>-->
+        <!--<property name="validationQuery" value="${validationQuery}"/>-->
+        <!--<property name="testWhileIdle" value="${testWhileIdle}"/>-->
+        <!--<property name="testOnBorrow" value="${testOnBorrow}"/>-->
+        <!--<property name="testOnReturn" value="${testOnReturn}"/>-->
+        <!--<property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}"/>-->
+        <!--&lt;!&ndash; 打开removeAbandoned功能 &ndash;&gt;-->
+        <!--<property name="removeAbandoned" value="${removeAbandoned}"/>-->
+        <!--&lt;!&ndash; 1800秒，也就是30分钟 &ndash;&gt;-->
+        <!--<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>-->
+        <!--&lt;!&ndash; 关闭abanded连接时输出错误日志 &ndash;&gt;-->
+        <!--<property name="logAbandoned" value="${logAbandoned}"/>-->
+    <!--</bean>-->
 
 
-    <bean id="sessionFactoryHibernate" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
-                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-            </props>
-        </property>
+    <!--<bean id="sessionFactoryHibernate" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">${hibernate.dialect}</prop>-->
+                <!--<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>-->
+                <!--<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>-->
+                <!--<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>-->
+            <!--</props>-->
+        <!--</property>-->
 
-    </bean>
+    <!--</bean>-->
 
     <!--hibernateTemplate 开启缓存-->
-    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
-        <property name="sessionFactory" ref="sessionFactoryHibernate"/>
-        <property name="cacheQueries" value="true"/>
-    </bean>
+    <!--<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">-->
+        <!--<property name="sessionFactory" ref="sessionFactoryHibernate"/>-->
+        <!--<property name="cacheQueries" value="true"/>-->
+    <!--</bean>-->
 
     <!-- Add new DAOs here -->
-    <bean id="baseDaoHibernate" abstract="true" class="org.springframework.orm.hibernate5.support.HibernateDaoSupport">
-        <property name="hibernateTemplate" ref="hibernateTemplate"/>
-    </bean>
+    <!--<bean id="baseDaoHibernate" abstract="true" class="org.springframework.orm.hibernate5.support.HibernateDaoSupport">-->
+        <!--<property name="hibernateTemplate" ref="hibernateTemplate"/>-->
+    <!--</bean>-->
 
-    <bean id="transactionManagerHibernate" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactoryHibernate"/>
-    </bean>
+    <!--<bean id="transactionManagerHibernate" class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactoryHibernate"/>-->
+    <!--</bean>-->
 
     <!--<bean id="userDao" class="com.yueking.core.shiro.dao.UserDao" abstract="true"/>-->
     <!--<bean id="roleDao" class="com.yueking.core.shiro.dao.RoleDao" abstract="true"/>-->
