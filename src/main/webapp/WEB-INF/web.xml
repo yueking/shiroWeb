@@ -4,20 +4,48 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <display-name>Archetype Created Web Application</display-name>
-
+    <!--在项目启动的时候，就去加载applicationContext.xml的配置文件，在web.xml中
+    配置ContextLoaderListener监听器（该监听器只能加载WEB-INF目录下的applicationContext.xml)的配置文件-->
+    <!--配置Spring的监听器-->
     <listener>
-        <listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
+    <!--默认只能加载WEB-INF目录下的applicationContext.xml
+    所以要配置加载类路径的配置文件-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>
-            classpath:spring-beans.xml,
-            classpath:spring-shiro-web.xml
-        </param-value>
+        <param-value>classpath:spring-config.xml</param-value>
     </context-param>
+    <!--配置前端控制器：服务器启动必须加载，需要加载springmvc.xml的配置文件-->
+
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--配置初始化参数，创建完DispatcherServlet对象，加载springmvc.xml文件-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-config.xml</param-value>
+        </init-param>
+        <!--服务器启动的时候，让DispatcherServlet对象创建-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!--配置解决中文乱码的过滤器-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 
     <filter>
@@ -35,6 +63,9 @@
     </filter-mapping>
 
 
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/pages/login/login.jsp</welcome-file>
+    </welcome-file-list>
 
 
 </web-app>
