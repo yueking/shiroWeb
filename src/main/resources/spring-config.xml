@@ -19,13 +19,22 @@
         -->
 
     </context:component-scan>
+    <!--<import resource="spring-shiro-web.xml"/>-->
 
-    <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
-    <mvc:annotation-driven />
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--jsp所在的目录-->
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <!--文件的后缀名-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <!-- spring mvc 静态文件排除 -->
     <!--这个在hello world项目中没有 后面的location="/resources/" 通常用于存放css、js、image、html-->
     <mvc:resources mapping="/*" location="/" />
+    <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
+    <mvc:annotation-driven />
 
-    <import resource="spring-shiro-web.xml"/>
+
+
 </beans>
