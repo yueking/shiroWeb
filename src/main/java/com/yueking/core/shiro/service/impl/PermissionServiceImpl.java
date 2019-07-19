@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Service
+//@Service
 @Transactional
 public class PermissionServiceImpl implements PermissionService {
     @Autowired
