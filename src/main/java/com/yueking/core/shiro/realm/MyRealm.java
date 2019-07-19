@@ -12,6 +12,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        System.out.println("===========doGetAuthorizationInfo===========");
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         return info;
     }
