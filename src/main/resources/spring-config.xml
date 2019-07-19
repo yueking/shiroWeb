@@ -17,6 +17,7 @@
         <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
     </context:component-scan>
     <import resource="spring-shiro-web.xml"/>
+    <!--<import resource="spring-shiro.xml"/>-->
 
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
