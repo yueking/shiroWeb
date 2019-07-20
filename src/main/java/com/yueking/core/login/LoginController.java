@@ -62,6 +62,9 @@ public class LoginController {
         if (message == null) {
             ModelAndView view = new ModelAndView();
             view.setViewName("home");
+            if (subject.isAuthenticated()) {
+                System.out.println("=====isAuthenticated");
+            }
             return view;
         } else {
             ModelAndView view = new ModelAndView();
