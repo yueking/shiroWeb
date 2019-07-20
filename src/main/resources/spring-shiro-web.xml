@@ -18,6 +18,7 @@
             <value>
                 /intoLogin = anon
                 /subLogin = anon
+                <!--/subLogin = anon-->
                 <!--/intoHome = anon-->
                 <!--/login.jsp = anon-->
                 <!--/unauthorized.jsp = anon-->
