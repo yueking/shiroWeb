@@ -34,7 +34,7 @@ public class LoginController {
 //            return e.getMessage();
 //        }
 
-        return "登录成功";
+        return "home";
 
     }
 }
