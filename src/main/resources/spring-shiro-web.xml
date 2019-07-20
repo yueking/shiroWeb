@@ -18,7 +18,7 @@
                 /login.jsp = anon
                 /index.jsp = anon
                 /403.jsp = anon
-                /intoHome = anon
+                /subLogin = authc
                 /* = authc
             </value>
 
