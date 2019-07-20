@@ -27,7 +27,7 @@ public class LoginController {
     }
 
     @RequestMapping("subLogin")
-    public String subLogin(User user){
+    public String subLogin(HttpServletRequest request,User user){
         System.out.println("====subLogin"+user);
         /*获得主体*/
         Subject subject = SecurityUtils.getSubject();
