@@ -12,5 +12,8 @@
 </head>
 <body>
 <h3>home success</h3>
+<a href="logout">
+    <button>logout</button>
+</a>
 </body>
 </html>

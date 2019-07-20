@@ -31,6 +31,23 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping("logout")
+    public ModelAndView logout(ModelAndView view){
+        String message = "logout message";
+        Subject subject = SecurityUtils.getSubject();
+        if (subject != null) {
+            try{
+                subject.logout();
+                message = "logout success";
+            }catch(Exception ex){
+                message = "logout error";
+
+            }
+        }
+        view.addObject("message", message);
+        return view;
+    }
+
     @RequestMapping("subLogin")
     public ModelAndView subLogin(User user, Model model) throws Exception {
         System.out.println("====subLogin"+user);
