@@ -11,14 +11,16 @@
         <!--设置登录页的，未登录页及securityManager对象;及过滤器链-->
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="intoLogin"/>
-        <property name="successUrl" value="intoHome"/>
+        <!--<property name="successUrl" value="intoHome"/>-->
         <property name="unauthorizedUrl" value="unauthorized"/>
         <!--过滤器链，从上往下进行匹配,这时不需要认证anon与需要认证authc-->
         <property name="filterChainDefinitions" >
             <value>
                 /intoLogin = anon
-                /login.jsp = anon
-                /unauthorized.jsp = anon
+                /subLogin = anon
+                <!--/intoHome = anon-->
+                <!--/login.jsp = anon-->
+                <!--/unauthorized.jsp = anon-->
                 /unauthorized = anon
                 /* = authc
             </value>
