@@ -8,7 +8,9 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,37 +32,44 @@ public class LoginController {
     }
 
     @RequestMapping("subLogin")
-    public String subLogin(HttpServletRequest request, User user) throws Exception {
+    public ModelAndView subLogin(User user, Model model) throws Exception {
         System.out.println("====subLogin"+user);
+        String message=null;
 
-        String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
-        if (exceptionClassName != null) {
-            if (exceptionClassName.equals(UnknownAccountException.class.getName())) {
-                //todo throw Exception("用户不存在");
-                throw new Exception("用户不存在");
-            } else if (exceptionClassName.equals(IncorrectCredentialsException.class.getName())) {
-                //todo throw Exception("用户名/密码错误");
-                throw new Exception("用户名/密码错误");
-            } else {
-                throw new Exception();
-            }
-        }
 
         /*获得主体*/
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken taken = new UsernamePasswordToken(user.getUsername(),user.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),user.getPassword());
+        token.setRememberMe(true);
 
         try {
-            subject.login(taken);
-            if (subject.isAuthenticated()) {
-                return "home";
-            }
-
-        } catch (AuthenticationException e) {
-            //e.printStackTrace();
-            return e.getMessage();
+            subject.login(token);
+        } catch (UnknownAccountException e) {
+            System.out.println("=====UnknownAccountException");
+            message = "UnknownAccountException";
+//            throw new UnknownAccountException();
+        }catch (IncorrectCredentialsException ex) {
+//            return "用户不存在或者密码错误！";
+            message = "password error";
+        } catch (AuthenticationException ex) {
+            message = "AuthenticationException";
+//            return ex.getMessage(); // 自定义报错信息
+        } catch (Exception ex) {
+            ex.printStackTrace();
+//            return "内部错误，请重试！";
+            message = "error";
         }
-        return "unauthorized";
+        if (message == null) {
+            ModelAndView view = new ModelAndView();
+            view.setViewName("home");
+            return view;
+        } else {
+            ModelAndView view = new ModelAndView();
+            view.setViewName("unauthorized");
+            view.addObject("message", message);
+            return view;
+        }
+
 
     }
 }
