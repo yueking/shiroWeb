@@ -24,7 +24,7 @@ public class MyRealm extends AuthorizingRealm {
             System.out.println("======unknownAccount:"+username);
             throw new UnknownAccountException();
         }
-        if (!password.equals("123")) {
+        if (password.equals("123")) {
             System.out.println("======password oky");
             throw new IncorrectCredentialsException();
         }
