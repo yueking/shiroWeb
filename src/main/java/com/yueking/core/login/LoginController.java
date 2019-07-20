@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
-    @RequestMapping("index")
+    @RequestMapping("intoHome")
     public String index(){
-        return "index";
+        return "home";
+    }
+
+    @RequestMapping("unauthorized")
+    public String unauthorized(){
+        return "unauthorized";
     }
 
     @RequestMapping("intoLogin")
