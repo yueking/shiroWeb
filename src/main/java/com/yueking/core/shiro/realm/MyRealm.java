@@ -21,6 +21,7 @@ public class MyRealm extends AuthorizingRealm {
         String username = (String) token.getPrincipal();
         String password = new String ((char[])token.getCredentials());
         String passwordMD5="202cb962ac59075b964b07152d234b70";
+//        String passwordMD5="d9b1d7db4cd6e70935368a1efb10e377";
 
         if (!username.equals("yueking")) {
             System.out.println("======unknownAccount:"+username);
