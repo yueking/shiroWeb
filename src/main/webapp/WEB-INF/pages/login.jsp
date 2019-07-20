@@ -13,7 +13,7 @@
 <body>
 <h3>login page</h3>
 
-<form action="intoHome">
+<form action="subLogin">
     username:<input type="text" name="username"/>
     <p/>
     passwrod<input type="password" name="password"/>
