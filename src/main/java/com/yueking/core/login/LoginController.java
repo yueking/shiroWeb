@@ -22,7 +22,7 @@ public class LoginController {
 
     @RequestMapping("subLogin")
     public String subLogin(){
-        System.out.println("subLogin");
+        System.out.println("====subLogin");
         /*获得主体*/
 //        Subject subject = SecurityUtils.getSubject();
 //        UsernamePasswordToken taken = new UsernamePasswordToken(user.getUsername(),user.getPassword());
