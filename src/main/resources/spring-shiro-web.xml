@@ -50,7 +50,7 @@
         <!--设置加密算法-->
         <property name="hashAlgorithmName" value="md5"/>
         <!--设置加密次数-->
-        <property name="hashIterations" value="2"/>
+        <property name="hashIterations" value="1"/>
 
     </bean>
 

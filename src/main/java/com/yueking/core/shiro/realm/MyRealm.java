@@ -17,19 +17,21 @@ public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.out.println("=========doGetAuthenticationInfo========"+token);
+//        获取登录信息
         String username = (String) token.getPrincipal();
         String password = new String ((char[])token.getCredentials());
+        String passwordMD5="202cb962ac59075b964b07152d234b70";
 
         if (!username.equals("yueking")) {
             System.out.println("======unknownAccount:"+username);
             throw new UnknownAccountException();
         }
-        if (!password.equals("123")) {
-            System.out.println("======password error!");
-            throw new IncorrectCredentialsException();
-        }else {
-            System.out.println("======password oky");
-        }
-        return new SimpleAuthenticationInfo(username,password,getName());
+//        if (!password.equals("123")) {
+//            System.out.println("======password error!");
+//            throw new IncorrectCredentialsException();
+//        }else {
+//            System.out.println("======password oky");
+//        }
+        return new SimpleAuthenticationInfo(username,passwordMD5,getName());
     }
 }
