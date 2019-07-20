@@ -65,7 +65,7 @@ public class LoginController {
             return view;
         } else {
             ModelAndView view = new ModelAndView();
-            view.setViewName("unauthorized");
+            view.setViewName("login");
             view.addObject("message", message);
             return view;
         }

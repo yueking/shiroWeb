@@ -12,7 +12,7 @@
 </head>
 <body>
 <h3>login page</h3>
-
+<h5>${message}</h5>
 <form action="subLogin" method="post">
     username:<input type="text" name="username"/>
     <p/>
