@@ -32,20 +32,15 @@ public class LoginController {
     }
 
     @RequestMapping("logout")
-    public ModelAndView logout(ModelAndView view){
-        String message = "logout message";
+    public String logout(){
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
             try{
                 subject.logout();
-                message = "logout success";
             }catch(Exception ex){
-                message = "logout error";
-
             }
         }
-        view.addObject("message", message);
-        return view;
+        return "success";
     }
 
     @RequestMapping("subLogin")
