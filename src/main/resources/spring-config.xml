@@ -19,7 +19,7 @@
         -->
 
     </context:component-scan>
-    <import resource="spring-shiro-web.xml"/>
+    <!--<import resource="spring-shiro-web.xml"/>-->
 
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
