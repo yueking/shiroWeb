@@ -13,10 +13,10 @@
 <body>
 <h3>login page</h3>
 
-<form action="subLogin">
+<form action="subLogin" method="post">
     username:<input type="text" name="username"/>
     <p/>
-    passwrod<input type="password" name="password"/>
+    password<input type="password" name="password"/>
     <p/>
     <input type="submit"/>
 </form>

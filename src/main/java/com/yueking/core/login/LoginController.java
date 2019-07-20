@@ -1,5 +1,6 @@
 package com.yueking.core.login;
 
+import com.yueking.core.shiro.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -26,8 +27,8 @@ public class LoginController {
     }
 
     @RequestMapping("subLogin")
-    public String subLogin(){
-        System.out.println("====subLogin");
+    public String subLogin(User user){
+        System.out.println("====subLogin"+user);
         /*获得主体*/
 //        Subject subject = SecurityUtils.getSubject();
 //        UsernamePasswordToken taken = new UsernamePasswordToken(user.getUsername(),user.getPassword());
