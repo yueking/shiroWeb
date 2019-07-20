@@ -1,9 +1,6 @@
 package com.yueking.core.shiro.realm;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -20,8 +17,16 @@ public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.out.println("=========doGetAuthenticationInfo========"+token);
-        SimpleAuthenticationInfo authenticationInfo= new SimpleAuthenticationInfo(token.getPrincipal(),token.getCredentials(),getName());
+        String username = (String) token.getPrincipal();
+        String password = new String ((char[])token.getCredentials());
 
-        return authenticationInfo;
+        if (!username.equals("yueking")) {
+            System.out.println("======unknownAccount:"+username);
+            throw new UnknownAccountException();
+        }
+        if (!password.equals("123")) {
+            throw new IncorrectCredentialsException();
+        }
+        return new SimpleAuthenticationInfo(username,password,getName());
     }
 }

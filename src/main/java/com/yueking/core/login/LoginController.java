@@ -30,17 +30,20 @@ public class LoginController {
     public String subLogin(User user){
         System.out.println("====subLogin"+user);
         /*获得主体*/
-//        Subject subject = SecurityUtils.getSubject();
-//        UsernamePasswordToken taken = new UsernamePasswordToken(user.getUsername(),user.getPassword());
-//
-//        try {
-//            subject.login(taken);
-//        } catch (AuthenticationException e) {
-//            //e.printStackTrace();
-//            return e.getMessage();
-//        }
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken taken = new UsernamePasswordToken(user.getUsername(),user.getPassword());
 
-        return "home";
+        try {
+            subject.login(taken);
+            if (subject.isAuthenticated()) {
+                return "home";
+            }
+
+        } catch (AuthenticationException e) {
+            //e.printStackTrace();
+            return e.getMessage();
+        }
+        return "unauthorized";
 
     }
 }
