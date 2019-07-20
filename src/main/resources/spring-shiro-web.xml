@@ -16,6 +16,7 @@
         <!--过滤器链，从上往下进行匹配,这时不需要认证anon与需要认证authc-->
         <property name="filterChainDefinitions" >
             <value>
+                /intoLogin = anon
                 /login.jsp = anon
                 /unauthorized.jsp = anon
                 /* = authc
