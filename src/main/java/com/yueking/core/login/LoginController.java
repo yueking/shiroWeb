@@ -56,6 +56,22 @@ public class LoginController {
 
         try {
             subject.login(token);
+            if (subject.isAuthenticated()) {
+                System.out.println("---isAuthenticated:"+subject.isAuthenticated());
+                if (subject.hasRole("admin")) {
+                    System.out.println("--admin Account");
+                } else {
+                    System.out.println("--user Account");
+                }
+
+                if (subject.isPermitted("sys")) {
+                    System.out.println("-- sys permission");
+                }
+
+                if (subject.isPermitted("pub")) {
+                    System.out.println("-- pub permission");
+                }
+            }
         } catch (UnknownAccountException e) {
             System.out.println("=====UnknownAccountException");
             message = "UnknownAccountException";
@@ -74,9 +90,6 @@ public class LoginController {
         if (message == null) {
             ModelAndView view = new ModelAndView();
             view.setViewName("home");
-            if (subject.isAuthenticated()) {
-                System.out.println("=====isAuthenticated");
-            }
             return view;
         } else {
             ModelAndView view = new ModelAndView();
